@@ -40,25 +40,26 @@ const Coments: React.FC = () => {
 
             <div id='container'>
                 <div className='coments'>
-                    <div>
-
+                    <div className='coments__top__content'>
+                        <h3 className='coments__top__content__title'>All Reviews</h3>
+                        <button className='coments__top__content__btn'>Write a Review</button>
                     </div>
-                    <div>
+                    <div className='coments__group'>
                         {
                             comments?.map((comment: ShopDetailCaments) => (
-                                <div key={comment.id}>
-                                    <div>
-                                        <p>{renderStars(comment?.start)}</p>
-                                        <HiDotsHorizontal />
+                                <div className='coments__group__card' key={comment.id}>
+                                    <div className='coments__group__card__star__gr'>
+                                        <p className='coments__group__card__star__gr__icon'>{renderStars(comment?.start)}</p>
+                                        <button className='coments__group__card__star__gr__dot'><HiDotsHorizontal /></button>
                                     </div>
-                                    <h3>{comment.userName}<FaCircleCheck /></h3>
-                                    <p>{comment.text}</p>
-                                    <p>{comment.createdAt}</p>
+                                    <h3 className='coments__group__card__user'>{comment.userName}<FaCircleCheck className='check__icons'/></h3>
+                                    <p className='coments__group__card__desc'>{comment.text}</p>
+                                    <p className='coments__group__card__date'>{comment.createdAt}</p>
                                 </div>
                             ))
                         }
                     </div>
-                    <button></button>
+                    <button className='coments__btn'>Load More Reviews</button>
 
                 </div>
             </div>

@@ -353,11 +353,109 @@
                     line-height: 21.6px;
                     text-align: center;
                     color: #FFFFFF;
+
                     &:hover {
                         background: none;
                         border-color: #0000001A;
                         color: #000000;
                         transition: .5s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1330px) {
+    .detail {
+        .detail__maps {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .detail {
+        .detail__maps {
+            .detail__maps__left {
+                flex-direction: column-reverse;
+
+                .detail__maps__left__group {
+                    flex-direction: row;
+
+                    .detail__maps__left__group__img {
+                        width: 111px;
+                        height: 106px;
+                    }
+                }
+
+                .detail__maps__left__box {
+                    width: 358px;
+                    height: 290px;
+                }
+            }
+
+            .detail__maps__right {
+                .detail__maps__right__title {
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 28px;
+                    text-align: left;
+                }
+
+                .detail__maps__right__counters {
+                    flex-direction: column;
+                    align-items: start;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    .detail {
+        padding: 0px 16px;
+
+        .detail__maps {
+            .detail__maps__right {
+                .detail__maps__right__sizes {
+                    .detail__maps__right__sizes__group {
+                        .detail__maps__right__sizes__group__btn {
+                            width: 70px;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 18.9px;
+                            text-align: center;
+                        }
+                    }
+                }
+
+                .detail__maps__right__line {
+                    width: 340px;
+                }
+
+                .detail__maps__right__desc {
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+                }
+
+                .detail__maps__right__prices {
+
+                    .detail__maps__right__prices__inc,
+                    .detail__maps__right__prices__dec {
+                        font-size: 24px;
+                        font-weight: 700;
+                        line-height: 32.4px;
+                        text-align: left;
+                    }
+                }
+
+                .detail__maps__right__counters {
+                    .detail__maps__right__counters__adds {
+                        width: 270px;
                     }
                 }
             }
