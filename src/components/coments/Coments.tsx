@@ -1,11 +1,10 @@
 import React from 'react'
 import "./Coments.scss"
-import { data, useParams } from 'react-router-dom';
-import { useGetShopDetailQuery } from '../../redux/api/api';
 import { FaCircleCheck, FaStar } from 'react-icons/fa6';
 import { request } from '../../redux/api';
 import { useQuery } from '@tanstack/react-query';
 import { HiDotsHorizontal } from "react-icons/hi";
+import { useParams } from 'react-router-dom';
 
 interface ShopDetailCaments {
     createdAt: string
@@ -15,7 +14,7 @@ interface ShopDetailCaments {
     userName: string
 }
 
-const Coments = () => {
+const Coments: React.FC = () => {
 
     const renderStars = (star: number) => {
         return Array.from({ length: star }, (_, index) => (
@@ -42,7 +41,7 @@ const Coments = () => {
             <div id='container'>
                 <div className='coments'>
                     <div>
-                        
+
                     </div>
                     <div>
                         {
