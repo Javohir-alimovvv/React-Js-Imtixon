@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import "./Search.scss"
-import { IoSearch, IoMenu } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 
 
 const Search: React.FC<{ search: boolean, setSearch: (search: boolean) => void }> = ({ search, setSearch }) => {

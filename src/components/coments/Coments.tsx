@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import "./Coments.scss"
 import { FaCircleCheck, FaStar } from 'react-icons/fa6';
 import { request } from '../../redux/api';
@@ -67,5 +67,5 @@ const Coments: React.FC = () => {
     )
 }
 
-export default Coments
+export default memo(Coments)
 
