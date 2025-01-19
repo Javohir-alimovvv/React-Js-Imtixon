@@ -1,0 +1,175 @@
+.dress__style {
+    width: 100%;
+    height: auto;
+    background: #F0F0F0;
+    border-radius: 40px;
+    margin-top: 80px;
+    padding: 70px 64px 76px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .dress__title {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 57.6px;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 64px;
+    }
+
+    .dress__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+
+        .dress__card {
+            width: auto;
+            height: 289px;
+            border-radius: 20px;
+            background-image: url("../../assets/image/oqf.png");
+            background-size: cover;
+            padding: 25px 36px;
+        }
+
+        .dress__card__2 {
+            width: auto;
+            height: 289px;
+            border-radius: 20px;
+            background-image: url("../../assets/image/bola.png");
+            background-size: cover;
+            padding: 25px 36px;
+            grid-column: 2 / 4;
+        }
+
+        .dress__card__3 {
+            width: auto;
+            height: 289px;
+            border-radius: 20px;
+            background-image: url("../../assets/image/qiz.png");
+            background-size: cover;
+            padding: 25px 36px;
+            grid-column: 1 / 3;
+        }
+
+        .dress__card__4 {
+            width: auto;
+            height: 289px;
+            border-radius: 20px;
+            background-image: url("../../assets/image/gym.png");
+            background-size: cover;
+            padding: 25px 36px;
+
+        }
+
+        .dress__label {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 48.6px;
+            text-align: left;
+            color: #000000;
+        }
+    }
+}
+
+@media (max-width: 890px) {
+    .dress__style {
+        .dress__title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 36px;
+            text-align: center;
+        }
+
+        .dress__grid {
+
+            // .dress__card{
+            //     height: 190px;
+            // }
+            .dress__label {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 32.4px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .dress__style {
+        // .dress__title {
+        //     font-size: 32px;
+        //     font-weight: 700;
+        //     line-height: 36px;
+        //     text-align: center;
+        // }
+
+        .dress__grid {
+            .dress__card {
+                height: 190px;
+            }
+
+            .dress__card__2 {
+                height: 190px;
+            }
+
+            .dress__card__3 {
+                height: 190px;
+            }
+
+            .dress__card__4 {
+                height: 190px;
+            }
+
+            // .dress__label {
+            //     font-size: 24px;
+            //     font-weight: 700;
+            //     line-height: 32.4px;
+            //     text-align: left;
+            // }
+        }
+    }
+}
+
+@media (max-width: 590px) {
+    .dress__style {
+        padding: 40px 24px 27px 24px;
+
+        .dress__title {
+            max-width: 246px;
+            width: 100%;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 36px;
+            text-align: center;
+        }
+
+        .dress__grid {
+            grid-template-columns: 1fr;
+
+            .dress__card {
+                height: 190px;
+
+            }
+
+            .dress__card__2 {
+                height: 190px;
+                grid-column: 1 / 1;
+            }
+
+            .dress__card__3 {
+                height: 190px;
+                grid-column: 1 / 1;
+            }
+
+            .dress__card__4 {
+                height: 190px;
+            }
+
+        }
+    }
+}
