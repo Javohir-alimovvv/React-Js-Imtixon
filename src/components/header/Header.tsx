@@ -51,7 +51,7 @@ const Header: React.FC<{ isOpen: boolean, setIsOpen: (isOpen: boolean) => void, 
               </form>
               <div className="header__navbar__content">
                 <button onClick={toggleSearch} className="header__navbar__content__btn"><IoSearch /></button>
-                <button className="header__navbar__content__btn__block"><BsCart3 /></button>
+                <Link to={"/card"}><button className="header__navbar__content__btn__block"><BsCart3 /></button></Link>
                 <button className="header__navbar__content__btn__block"><FaRegUserCircle /></button>
               </div>
             </nav>

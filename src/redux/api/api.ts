@@ -7,12 +7,16 @@ export const shopApi = api.injectEndpoints({
         url: `/products/${id}`
       }),
       providesTags: ['Product']
-    })
+    }),
+    getCardById: build.query({
+      query: (id: number) => `/products/${id}`,
+    }),
   })
 })
 
 
 export const {
   useGetShopDetailQuery,
+  useGetCardByIdQuery,
 } = shopApi
 

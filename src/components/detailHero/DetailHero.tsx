@@ -2,8 +2,11 @@ import React, { memo, useState } from 'react'
 import "./DetailHero.scss"
 import { Link, useParams } from 'react-router-dom'
 import { FaChevronRight } from "react-icons/fa6";
-import { useGetShopDetailQuery } from '../../redux/api/api';
+import { useGetCardByIdQuery, useGetShopDetailQuery } from '../../redux/api/api';
 import { FaStar, FaCheck } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/api';
+import { IProducts } from '../../types';
 
 
 interface ShopDetail {
@@ -26,7 +29,7 @@ const DetailHero: React.FC = () => {
             <span key={index}><FaStar /></span>
         ))
     }
-    
+
     const [count, setCount] = useState<number>(0)
     const [price, setPrice] = useState<number>(data?.price || 0)
     const increment = () => {
@@ -38,6 +41,23 @@ const DetailHero: React.FC = () => {
         setPrice(prevPrice => prevPrice - (data?.price || 0))
     }
 
+
+
+    const { data: product } = useGetCardByIdQuery(id) as { data: IProducts }
+    const dispatch = useDispatch()
+
+    const handleAddToCart = () => {
+        if (product) {
+            dispatch(
+                addToCart({
+                    id: product.id,
+                    title: product.title,
+                    price,
+                    quantity: count,
+                    image: [product.images]
+                }))
+        }
+    }
 
     return (
         <>
@@ -112,7 +132,7 @@ const DetailHero: React.FC = () => {
                                         <button onClick={increment}
                                             className='detail__maps__right__counters__count__btn__two'>+</button>
                                     </div>
-                                    <button className='detail__maps__right__counters__adds'>Add to Cart</button>
+                                    <button onClick={handleAddToCart} className='detail__maps__right__counters__adds'>Add to Cart</button>
                                 </div>
                             </div>
                         </div>

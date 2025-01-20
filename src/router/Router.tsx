@@ -3,9 +3,10 @@ import { useRoutes } from 'react-router-dom'
 import Layout from '../pages/layout/Layout'
 import Home from '../pages/home/Home'
 import Detail from '../pages/detail/Detail'
+import Card from '../pages/card/Card'
 
 const Router: React.FC = () => {
-  
+
 
 
   return (
@@ -22,8 +23,12 @@ const Router: React.FC = () => {
                 element: <Home />
               },
               {
+                path: "/card",
+                element: <Card />
+              },
+              {
                 path: "detail/:id",
-                element: <Detail/>
+                element: <Detail />
               },
               {
                 path: "*",
