@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import "./Coments.scss"
 import { FaCircleCheck, FaStar } from 'react-icons/fa6';
 import { request } from '../../redux/api';
@@ -34,6 +34,27 @@ const Coments: React.FC = () => {
 
     if (isLoading) return <p>Loading comments...</p>;
     if (error) return <p>Failed to load comments.</p>;
+    const [form, setForm] = useState<boolean>(true)
+
+    const toggleSearch = () => {
+        setForm(!form);
+    };
+
+    const { data } = useQuery({
+        queryKey: ['caments', id],
+        queryFn: () => {
+            return request
+                .post(`/products/${id}/caments`)
+                .then(res => res)
+                .catch(err => console.log(err))
+        },
+        enabled: !!id
+    })
+    // const renderStars = (star: number) => {
+    //     return Array.from({ length: star }, (_, index) => (
+    //         <span key={index}><FaStar /></span>
+    //     ))
+    // }
 
     return (
         <>
@@ -42,8 +63,13 @@ const Coments: React.FC = () => {
                 <div className='coments'>
                     <div className='coments__top__content'>
                         <h3 className='coments__top__content__title'>All Reviews</h3>
-                        <button className='coments__top__content__btn'>Write a Review</button>
+                        <button onClick={toggleSearch} className='coments__top__content__btn'>Write a Review</button>
                     </div>
+                    <form className={`coments__form ${form ? "form__two" : ""}`} action="">
+                        <input className='coments__form__coment' placeholder='Leave comment' type="text" />
+                        <input className='coments__form__name' placeholder='Enter your name' type="text" />
+                        <button className='coments__form__button'>Submit</button>
+                    </form>
                     <div className='coments__group'>
                         {
                             comments?.map((comment: ShopDetailCaments) => (
@@ -52,7 +78,7 @@ const Coments: React.FC = () => {
                                         <p className='coments__group__card__star__gr__icon'>{renderStars(comment?.start)}</p>
                                         <button className='coments__group__card__star__gr__dot'><HiDotsHorizontal /></button>
                                     </div>
-                                    <h3 className='coments__group__card__user'>{comment.userName}<FaCircleCheck className='check__icons'/></h3>
+                                    <h3 className='coments__group__card__user'>{comment.userName}<FaCircleCheck className='check__icons' /></h3>
                                     <p className='coments__group__card__desc'>{comment.text}</p>
                                     <p className='coments__group__card__date'>{comment.createdAt}</p>
                                 </div>

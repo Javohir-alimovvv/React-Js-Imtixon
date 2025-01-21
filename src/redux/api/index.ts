@@ -39,14 +39,9 @@ export const api = createApi({
 
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CartItem } from "../../types"
 
-type CartItem = {
-  id: number,
-  title: string,
-  price: number,
-  quantity: number,
-  image: string[],
-};
+
 
 type CartState = CartItem[];
 

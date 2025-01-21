@@ -31,7 +31,7 @@ const DetailHero: React.FC = () => {
     }
 
     const [count, setCount] = useState<number>(0)
-    const [price, setPrice] = useState<number>(data?.price || 0)
+    const [pay, setPrice] = useState<number>(data?.price || 0)
     const increment = () => {
         setCount(p => p + 1)
         setPrice(prevPrice => prevPrice + (data?.price || 0))
@@ -52,9 +52,10 @@ const DetailHero: React.FC = () => {
                 addToCart({
                     id: product.id,
                     title: product.title,
-                    price,
+                    amount: pay,
                     quantity: count,
-                    image: [product.images]
+                    image: [product.images],
+                    price: product.price,
                 }))
         }
     }
@@ -100,7 +101,7 @@ const DetailHero: React.FC = () => {
                                     <p className='detail__maps__right__stars__text'>{data?.star}</p>
                                 </div>
                                 <div className='detail__maps__right__prices'>
-                                    <h3 className='detail__maps__right__prices__inc'>${price.toFixed(2)}</h3>
+                                    <h3 className='detail__maps__right__prices__inc'>${pay.toFixed(2)}</h3>
                                     <del className='detail__maps__right__prices__dec'>$400</del>
                                 </div>
                                 <p className='detail__maps__right__desc'>{data?.description}</p>

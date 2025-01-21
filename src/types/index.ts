@@ -7,3 +7,20 @@ export interface IProducts {
     star: number
     size: string
 }
+
+export type CartItem = {
+    id: number,
+    title: string,
+    price: number,
+    quantity: number,
+    image: string[],
+    amount: number
+}
+
+export interface HomeCaments {
+    createdAt: string
+    text: string
+    start: number
+    id: number
+    userName: string
+}

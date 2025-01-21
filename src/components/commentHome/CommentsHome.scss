@@ -1,0 +1,96 @@
+.comments__home {
+    width: 100%;
+    height: auto;
+    margin-top: 80px;
+    
+
+    .comments__home__title {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 57.6px;
+        text-align: left;
+        color: #000000;
+        margin-bottom: 40px;
+    }
+
+    .comments__home__group{
+        width: 100%;
+        height: 300px;
+        padding: 12px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        overflow-x: auto;
+        gap: 16px;
+
+        .coments__group__card {
+            width: 360px;
+            height: 241px;
+            border: 1px solid #0000001A;
+            border-radius: 20px;
+            padding: 28px 32px 28px 32px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        
+            .coments__group__card__star__gr {
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 15px;
+        
+                .coments__group__card__star__gr__icon {
+                    font-size: 22px;
+                    color: #FFC633;
+                }
+        
+                .coments__group__card__star__gr__dot {
+                    background: none;
+                    font-size: 24px;
+                    color: #00000066;
+        
+                    &:hover {
+                        color: #FFC633;
+                    }
+                }
+            }
+        
+            .coments__group__card__user {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 22px;
+                text-align: left;
+                color: #000000;
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+        
+                .check__icons {
+                    margin-left: 4px;
+                    font-size: 20px;
+                    color: #01AB31;
+                }
+            }
+        
+            .coments__group__card__desc {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22px;
+                text-align: left;
+                color: #00000099;
+                margin-bottom: 24px;
+            }
+        
+            .coments__group__card__date {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 22px;
+                text-align: left;
+                color: #00000099;
+            }
+        }
+    }
+}
+
+
+
