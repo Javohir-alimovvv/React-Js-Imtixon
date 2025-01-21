@@ -40,16 +40,23 @@ const Coments: React.FC = () => {
         setForm(!form);
     };
 
-    const { data } = useQuery({
-        queryKey: ['caments', id],
-        queryFn: () => {
-            return request
-                .post(`/products/${id}/caments`)
-                .then(res => res)
-                .catch(err => console.log(err))
-        },
-        enabled: !!id
-    })
+    // const mutation = useMutation({
+    //     mutationFn: postTodo,
+    //     onSuccess: () => {
+    //       queryClient.invalidateQueries({ queryKey: ['todos'] })
+    //     },
+    //   })
+
+    // const { data } = useQuery({
+    //     queryKey: ['caments', id],
+    //     queryFn: () => {
+    //         return request
+    //             .post(`/products/${id}/caments`)
+    //             .then(res => res)
+    //             .catch(err => console.log(err))
+    //     },
+    //     enabled: !!id
+    // })
     // const renderStars = (star: number) => {
     //     return Array.from({ length: star }, (_, index) => (
     //         <span key={index}><FaStar /></span>
