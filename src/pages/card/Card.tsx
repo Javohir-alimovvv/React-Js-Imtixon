@@ -19,6 +19,8 @@ const Card: React.FC = () => {
 
     const [count, setCount] = useState<number>(1)
     const [pay, setPrice] = useState<number>(cart.reduce((total, item) => total + item.price, 0))
+    console.log(pay);
+    
     const increment = () => {
         setCount(p => p + 1)
         setPrice(prevPrice => prevPrice + cart.reduce((total, item) => total + item.price, 0) / cart.length)
