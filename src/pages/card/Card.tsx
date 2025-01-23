@@ -19,7 +19,6 @@ const Card: React.FC = () => {
 
     const [count, setCount] = useState<number>(1)
     const [pay, setPrice] = useState<number>(cart.reduce((total, item) => total + item.price, 0))
-    console.log(pay);
     
     const increment = () => {
         setCount(p => p + 1)
@@ -55,6 +54,7 @@ const Card: React.FC = () => {
                                                 <h3 className='cards__map__left__box__center__size'>Size: <span>Large</span></h3>
                                                 <h3 className='cards__map__left__box__center__size'>Color: <span>White</span></h3>
                                                 <p className='cards__map__left__box__center__price'>{item.price}</p>
+                                                <p>{pay}</p>
                                             </div>
                                             <div className='cards__map__left__box__right'>
                                                 <button className='cards__map__left__box__right__remove__btn' onClick={() => handleRemoveFromCart(item.id)}><RiDeleteBin6Fill /></button>
