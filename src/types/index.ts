@@ -15,6 +15,7 @@ export type CartItem = {
     quantity: number,
     image: string[],
     amount: number
+    size: string[]
 }
 
 export interface HomeCaments {
@@ -23,4 +24,27 @@ export interface HomeCaments {
     start: number
     id: number
     userName: string
+}
+
+export interface postCommentTitle {
+    text: string
+    userName: string
+    start: number
+}
+
+export interface ShopDetailCaments {
+    createdAt: string
+    text: string
+    start: number
+    id: number
+    userName: string
+}
+export interface ShopDetail {
+    images: string[];
+    title: string
+    description: string
+    price: number
+    star: number
+    size: string[]
+
 }

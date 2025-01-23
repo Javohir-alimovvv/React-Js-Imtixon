@@ -48,15 +48,16 @@
         height: 0px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: start;
         border-top: 2px solid #00000044;
         padding-top: 20px;
         margin-bottom: 20px;
         opacity: 0;
         transition: .3s;
+        gap: 16px;
 
         .coments__form__coment {
-            width: 50%;
+            width: 400px;
             height: 40px;
             border: 1px solid #CBCBCB;
             font-size: 16px;
@@ -69,8 +70,22 @@
             padding: 0px 16px;
         }
 
+        .coments__form__star {
+            width: 320px;
+            height: 40px;
+            border: 1px solid #CBCBCB;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            text-align: left;
+            color: #6C7275;
+            outline: none;
+            border-radius: 6px;
+            padding: 0px 16px;
+        }
+        
         .coments__form__name {
-            width: 30%;
+            width: 272px;
             height: 40px;
             border: 1px solid #CBCBCB;
             font-size: 16px;
@@ -93,6 +108,7 @@
             line-height: 21.6px;
             text-align: center;
             color: #FFFFFF;
+
             &:hover {
                 background: none;
                 border-color: #0000001A;
@@ -102,7 +118,7 @@
         }
     }
 
-    .form__two{
+    .form__two {
         height: 80px;
         opacity: 1;
         transition: .3s;
@@ -144,7 +160,7 @@
                     color: #00000066;
 
                     &:hover {
-                        color: #FFC633;
+                        color: red;
                     }
                 }
             }

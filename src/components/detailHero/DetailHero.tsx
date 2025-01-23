@@ -6,30 +6,24 @@ import { useGetCardByIdQuery, useGetShopDetailQuery } from '../../redux/api/api'
 import { FaStar, FaCheck } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/api';
-import { IProducts } from '../../types';
+import { IProducts, ShopDetail } from '../../types';
 
 
-interface ShopDetail {
-    images: string[];
-    title: string
-    description: string
-    price: number
-    star: number
-    size: string[]
 
-}
 
 const DetailHero: React.FC = () => {
 
     const { id } = useParams()
     const { data } = useGetShopDetailQuery(id) as { data: ShopDetail }
 
+    // stat icon qancha chiqishligi
     const renderStars = (star: number) => {
         return Array.from({ length: star }, (_, index) => (
             <span key={index}><FaStar /></span>
         ))
     }
 
+    // count payment summasini hisoblash
     const [count, setCount] = useState<number>(0)
     const [pay, setPrice] = useState<number>(data?.price || 0)
     const increment = () => {
@@ -40,8 +34,6 @@ const DetailHero: React.FC = () => {
         setCount(p => p - 1)
         setPrice(prevPrice => prevPrice - (data?.price || 0))
     }
-
-
 
     const { data: product } = useGetCardByIdQuery(id) as { data: IProducts }
     const dispatch = useDispatch()
@@ -56,6 +48,7 @@ const DetailHero: React.FC = () => {
                     quantity: count,
                     image: [product.images],
                     price: product.price,
+                    size: product.size
                 }))
         }
     }
