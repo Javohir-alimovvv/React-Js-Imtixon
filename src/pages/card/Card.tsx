@@ -17,17 +17,19 @@ const Card: React.FC = () => {
         dispatch(removeFromCart(id));
     };
 
-    const [count, setCount] = useState<number>(1)
-    const [pay, setPrice] = useState<number>(cart.reduce((total, item) => total + item.price, 0))
-    
+    const [count, setCount] = useState<number>(0)
+    const [pay, setPrice] = useState<number>(0)
+
     const increment = () => {
         setCount(p => p + 1)
-        setPrice(prevPrice => prevPrice + cart.reduce((total, item) => total + item.price, 0) / cart.length)
+        setPrice(prevPrice => prevPrice + cart.reduce((total, item) => total + item.price, 0))
     }
     const decrement = () => {
         setCount(p => p - 1)
-        setPrice(prevPrice => prevPrice - cart.reduce((total, item) => total + item.price, 0) / cart.length)
+        setPrice(prevPrice => prevPrice - cart.reduce((total, item) => total + item.price, 0))
     }
+
+
     return (
 
         <>
@@ -53,15 +55,14 @@ const Card: React.FC = () => {
                                                 <h3 className='cards__map__left__box__center__title'>{item.title}</h3>
                                                 <h3 className='cards__map__left__box__center__size'>Size: <span>Large</span></h3>
                                                 <h3 className='cards__map__left__box__center__size'>Color: <span>White</span></h3>
-                                                <p className='cards__map__left__box__center__price'>{item.price}</p>
-                                                <p>{pay}</p>
+                                                <p className='cards__map__left__box__center__price'>${item.amount + pay}</p>
                                             </div>
                                             <div className='cards__map__left__box__right'>
                                                 <button className='cards__map__left__box__right__remove__btn' onClick={() => handleRemoveFromCart(item.id)}><RiDeleteBin6Fill /></button>
                                                 <div className='detail__maps__right__counters__count'>
-                                                    <button disabled={count === 1} onClick={decrement}
+                                                    <button disabled={count + item.quantity === 1} onClick={decrement}
                                                         className='detail__maps__right__counters__count__btn__one'>-</button>
-                                                    <p className='detail__maps__right__counters__count__value'>{count}</p>
+                                                    <p className='detail__maps__right__counters__count__value'>{count + item.quantity}</p>
                                                     <button onClick={increment}
                                                         className='detail__maps__right__counters__count__btn__two'>+</button>
                                                 </div>
@@ -91,18 +92,18 @@ const Card: React.FC = () => {
                                 cart?.map((card) => (
                                     <div className='cards__map__right__group'>
                                         <p className='cards__map__right__group__name'>Total</p>
-                                        <h3 key={card.id} className='cards__map__right__group__price'>{card.amount}</h3>
+                                        <h3 key={card.id} className='cards__map__right__group__price'>{card.amount + pay}</h3>
                                     </div>
                                 ))
                             }
                             <div className='cards__map__right__promo__gr'>
                                 <div className='cards__map__right__promo'>
-                                    <CiShoppingTag  className='cards__map__right__promo__icon'/>
+                                    <CiShoppingTag className='cards__map__right__promo__icon' />
                                     <p className='cards__map__right__promo__text'>Add promo code</p>
                                 </div>
                                 <button className='cards__map__right__promo__btn'>Apply</button>
                             </div>
-                            <button className='cards__map__right__btn__go'>Go to Checkout <FaArrowRight  className='cards__map__right__btn__go__icon'/></button>
+                            <button className='cards__map__right__btn__go'>Go to Checkout <FaArrowRight className='cards__map__right__btn__go__icon' /></button>
                         </div>
                     </div>
                 </div>

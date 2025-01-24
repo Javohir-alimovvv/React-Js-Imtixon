@@ -7,6 +7,7 @@ import { FaStar, FaCheck } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/api';
 import { IProducts, ShopDetail } from '../../types';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -24,15 +25,15 @@ const DetailHero: React.FC = () => {
     }
 
     // count payment summasini hisoblash
-    const [count, setCount] = useState<number>(0)
-    const [pay, setPrice] = useState<number>(data?.price || 0)
+    const [count, setCount] = useState<number>(1)
+    const [pay, setPrice] = useState<number>(data?.price || 120)
     const increment = () => {
         setCount(p => p + 1)
-        setPrice(prevPrice => prevPrice + (data?.price || 0))
+        setPrice(prevPrice => prevPrice + (data?.price || 120))
     }
     const decrement = () => {
         setCount(p => p - 1)
-        setPrice(prevPrice => prevPrice - (data?.price || 0))
+        setPrice(prevPrice => prevPrice - (data?.price || 120))
     }
 
     const { data: product } = useGetCardByIdQuery(id) as { data: IProducts }
@@ -50,6 +51,7 @@ const DetailHero: React.FC = () => {
                     price: product.price,
                     size: product.size
                 }))
+                toast.success('Product add to curd 👌')
         }
     }
 
@@ -126,14 +128,17 @@ const DetailHero: React.FC = () => {
                                         <button onClick={increment}
                                             className='detail__maps__right__counters__count__btn__two'>+</button>
                                     </div>
-                                    <button onClick={handleAddToCart} className='detail__maps__right__counters__adds'>Add to Cart</button>
+                                    <button onClick={handleAddToCart} className='detail__maps__right__counters__adds'>{`Add to Cart`}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+            />
         </>
     )
 }

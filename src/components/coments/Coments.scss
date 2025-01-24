@@ -220,7 +220,33 @@
         }
     }
 }
-
+@media (max-width: 890px) {
+    .coments {
+        .coments__form{
+            flex-direction: column;
+            align-items: start;
+            .coments__form__coment{
+                width: 100%;
+                height: 40px;
+            }
+            .coments__form__star{
+                width: 100%;
+                height: 40px;
+            }
+            .coments__form__name{
+                width: 100%;
+                height: 40px;
+            }
+            .coments__form__button{
+                width: 100%;
+                height: 40px;
+            }
+        }
+        .form__two{
+            height: 240px;
+        }
+    }
+}
 
 @media (max-width: 790px) {
     .coments {

@@ -44,6 +44,7 @@ const Coments: React.FC = () => {
         },
     });
 
+    // mament delete 
     const deleteMutation = useMutation({
         mutationFn: (commentId: number) =>
             axios
@@ -61,6 +62,7 @@ const Coments: React.FC = () => {
         event.preventDefault();
         if (newComment.text && newComment.userName && newComment.start) {
             mutation.mutate(newComment);
+            setForm(!form)
         }
     };
 

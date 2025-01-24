@@ -348,9 +348,71 @@
                     border: 1px solid #0000001A;
                     transition: .2s;
                 }
-                .cards__map__right__btn__go__icon{
+
+                .cards__map__right__btn__go__icon {
                     font-size: 22px;
                     margin-left: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1260px) {
+    .cards {
+        .cards__map {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (max-width: 730px) {
+    .cards {
+        .cards__map {
+            .cards__map__left {
+                .cars__flex {
+                    .cards__map__left__box {
+                        .cards__map__left__box__top {
+                            width: 99px;
+                            height: 99px;
+                        }
+
+                        .cards__map__left__box__center {
+                            .cards__map__left__box__center__title {
+                                font-size: 14px;
+                                font-weight: 700;
+                                line-height: 21.6px;
+                                text-align: left;
+                                max-width: 180px;
+                            }
+
+                            .cards__map__left__box__center__size {
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16.2px;
+                                text-align: left;
+                            }
+
+                            .cards__map__left__box__center__size span {
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16.2px;
+                                text-align: left;
+                            }
+
+                            .cards__map__left__box__center__price {
+                                font-size: 18px;
+                                font-weight: 700;
+                                line-height: 27px;
+                                text-align: left;
+                            }
+                        }
+                        .cards__map__left__box__right{
+                          .detail__maps__right__counters__count{
+                            width: 100px;
+                          }  
+                        }
+                    }
                 }
             }
         }

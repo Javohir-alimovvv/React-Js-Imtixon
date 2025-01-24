@@ -4,6 +4,7 @@ const request = axios.create({
 })
 export { request }
 
+
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = async (args: any, api: any, extraOptions: any) => {
@@ -38,10 +39,10 @@ export const api = createApi({
 })
 
 
+
+// card uchun nusha olish va yuborish
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem } from "../../types"
-
-
 
 type CartState = CartItem[];
 
