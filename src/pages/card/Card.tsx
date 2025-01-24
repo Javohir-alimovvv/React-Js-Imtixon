@@ -106,6 +106,21 @@ const Card: React.FC = () => {
                             <button className='cards__map__right__btn__go'>Go to Checkout <FaArrowRight className='cards__map__right__btn__go__icon' /></button>
                         </div>
                     </div>
+                    <div className='cards__payment'>
+                        <h2 className='cards__payment__text'>Check Out</h2>
+                        <form className='cards__payment__form' action="">
+                            <div className='cards__payment__form__group'>
+                                <h3 className='cards__payment__form__title'>Contact Infomation</h3>
+                                <div className='cards__payment__form__group__child'>
+                                    <input className='cards__payment__form__group__child__input' placeholder='First name' type="text" />
+                                    <input className='cards__payment__form__group__child__input' placeholder='Last name' type="text" />
+                                </div>
+                                <input className='cards__payment__form__group__phone' placeholder='Phone number' type="number" />
+                                <input className='cards__payment__form__group__phone' placeholder='Your Email' type="email" />
+                            </div>
+                            <button className='cards__payment__form__btn'>Place Order</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
