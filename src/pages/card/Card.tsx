@@ -2,16 +2,20 @@ import React, { memo, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux';
 import { removeFromCart } from '../../redux/api/index';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowRight, FaChevronRight } from "react-icons/fa6";
 import "./Card.scss"
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { CiShoppingTag } from 'react-icons/ci';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+import empyt_img from "../../assets/image/cart.jpg"
 
 const Card: React.FC = () => {
 
     const cart = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
+    const Bot_token = "7663778517:AAHLTijMCfFznDWG_1RuAK8YxoRBhYsWPe4"
 
     const handleRemoveFromCart = (id: number) => {
         dispatch(removeFromCart(id));
@@ -29,6 +33,54 @@ const Card: React.FC = () => {
         setPrice(prevPrice => prevPrice - cart.reduce((total, item) => total + item.price, 0))
     }
 
+    const [information, setInformation] = useState(
+        {
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: ""
+        }
+    )
+
+    const navigateCard = useNavigate()
+
+    const handleSubmitBot = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const message = `
+             New Order:
+       First Name: ${information.firstName}
+       Last Name: ${information.lastName}
+       Phone: ${information.phone}
+       Email: ${information.email}
+
+      Summary:
+       Maxsulot nomi: Fudbolka
+       Mahsulot narxi: $700
+        `;
+        try {
+            await axios.post(`https://api.telegram.org/bot${Bot_token}/SendMessage`, {
+                chat_id: "6891591255",
+                text: message
+            })
+            toast.success('Malumot yuborildi, Maxsulot tez orada yetkazib beriladi')
+            setInformation({
+                firstName: "",
+                lastName: "",
+                phone: "",
+                email: ""
+            })
+            cart.forEach(item => handleRemoveFromCart(item.id))
+            navigateCard("/")
+        } catch (error) {
+            toast.error('Error')
+        }
+
+    }
+    const handleChengeBot = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        setInformation({ ...information, [e.target.name]: e.target.value })
+
+    }
 
     return (
 
@@ -44,7 +96,7 @@ const Card: React.FC = () => {
                     </div>
                     <div className='cards__map'>
                         <div className='cards__map__left'>
-                            {
+                            {cart && cart.length > 0 ? (
                                 cart?.map((item) => (
                                     <div key={item.id} className='cars__flex'>
                                         <div className='cards__map__left__box' >
@@ -71,6 +123,13 @@ const Card: React.FC = () => {
                                         <div className='cards__map__left__line'></div>
                                     </div>
                                 ))
+                            ) 
+                            : (
+                                <div className='card_empty'>
+                                    <img className='card_empty_img' src={empyt_img} alt="" />
+                                </div>
+                            )
+                                
                             }
 
                         </div>
@@ -90,9 +149,9 @@ const Card: React.FC = () => {
                             </div>
                             {
                                 cart?.map((card) => (
-                                    <div className='cards__map__right__group'>
+                                    <div key={card.id} className='cards__map__right__group'>
                                         <p className='cards__map__right__group__name'>Total</p>
-                                        <h3 key={card.id} className='cards__map__right__group__price'>{card.amount + pay}</h3>
+                                        <h3 className='cards__map__right__group__price'>{card.amount + pay}</h3>
                                     </div>
                                 ))
                             }
@@ -108,22 +167,25 @@ const Card: React.FC = () => {
                     </div>
                     <div className='cards__payment'>
                         <h2 className='cards__payment__text'>Check Out</h2>
-                        <form className='cards__payment__form' action="">
+                        <form onSubmit={handleSubmitBot} className='cards__payment__form' action="">
                             <div className='cards__payment__form__group'>
                                 <h3 className='cards__payment__form__title'>Contact Infomation</h3>
                                 <div className='cards__payment__form__group__child'>
-                                    <input className='cards__payment__form__group__child__input' placeholder='First name' type="text" />
-                                    <input className='cards__payment__form__group__child__input' placeholder='Last name' type="text" />
+                                    <input onChange={handleChengeBot} value={information.firstName} name='firstName' className='cards__payment__form__group__child__input' placeholder='First name' type="text" />
+                                    <input onChange={handleChengeBot} value={information.lastName} name='lastName' className='cards__payment__form__group__child__input' placeholder='Last name' type="text" />
                                 </div>
-                                <input className='cards__payment__form__group__phone' placeholder='Phone number' type="number" />
-                                <input className='cards__payment__form__group__phone' placeholder='Your Email' type="email" />
+                                <input onChange={handleChengeBot} value={information.phone} name='phone' className='cards__payment__form__group__phone' placeholder='Phone number' type="number" />
+                                <input onChange={handleChengeBot} value={information.email} name='email' className='cards__payment__form__group__phone' placeholder='Your Email' type="email" />
                             </div>
                             <button className='cards__payment__form__btn'>Place Order</button>
                         </form>
                     </div>
                 </div>
             </div>
-
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </>
 
     )

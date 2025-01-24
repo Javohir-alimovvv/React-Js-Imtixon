@@ -49,7 +49,7 @@ const DetailHero: React.FC = () => {
                     quantity: count,
                     image: [product.images],
                     price: product.price,
-                    size: product.size
+                    size: [product.size]
                 }))
                 toast.success('Product add to curd 👌')
         }
